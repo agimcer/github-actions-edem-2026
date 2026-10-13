@@ -1,0 +1,12 @@
+name: Simulacion de Login con Secretos
+
+on:
+  workflow_dispatch:
+
+jobs:
+  login_seguro:
+    name: "Proceso de Autenticacion"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ejecutar login
+        run: echo "La contraseña secreta es ${{ secrets.DB_PASSWORD }}"

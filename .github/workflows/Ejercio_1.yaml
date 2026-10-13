@@ -1,0 +1,22 @@
+name: Variables de Entorno Globales
+
+on: 
+  workflow_dispatch:
+
+env:
+  GLOBAL_USER: "estudiante_edem"
+
+jobs:
+  primer_job:
+    name: "Ejecución del Job 1"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar usuario en Job 1
+        run: echo "El usuario en Job 1 es $GLOBAL_USER"
+
+  segundo_job:
+    name: "Ejecución del Job 2"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar usuario en Job 2
+        run: echo "El usuario en Job 2 no es $GLOBAL_USER"
