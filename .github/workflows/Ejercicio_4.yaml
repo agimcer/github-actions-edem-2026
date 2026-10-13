@@ -1,0 +1,31 @@
+name: Artefactos de Construccion
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job_generador:
+    name: "Job 1: Generar Archivo"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Crear archivo de texto
+        run: echo "Hola, este es un mensaje guardado en un artefacto" > mensaje.txt
+        
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: mi-archivo-txt
+          path: mensaje.txt
+
+  job_lector:
+    name: "Job 2: Leer Archivo"
+    runs-on: ubuntu-latest
+    needs: job_generador
+    steps:
+      - name: Descargar artefacto
+        uses: actions/download-artifact@v4
+        with:
+          name: mi-archivo-txt
+          
+      - name: Mostrar contenido del archivo
+        run: cat mensaje.txt

@@ -1,0 +1,15 @@
+name: Matriz de Estrategia Python
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: "Job de Test"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - name: Simulando entorno
+        run: echo "Ejecutando tests automáticos en Python ${{ matrix.python-version }}"
